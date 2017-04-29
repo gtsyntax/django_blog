@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}My Blog{% endblock %}
+
+{% block content %}
+	<div class="post-box">
+	{% for post in posts %}
+		<h2 class="post-title">
+			<a href="{{ post.get_absolute_url }}">
+			{{ post.title}}
+			</a>
+		</h2>
+		<p class="date">
+			published {{ post.publish | timesince }} by {{ post.author }}
+		</p>
+		<p>
+			{{ post.body|truncatewords:30}}
+		</p>
+		<hr/>
+	{% endfor %}
+	</div>
+{% endblock %}
